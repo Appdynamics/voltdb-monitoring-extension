@@ -1,0 +1,28 @@
+<monitor>
+        <name>VoltDBMonitor</name>
+        <type>managed</type>
+        <description>Volt DB monitor</description>
+        <monitor-configuration></monitor-configuration>
+        <monitor-run-task>
+                <execution-style>periodic</execution-style>
+                <execution-frequency-in-seconds>60</execution-frequency-in-seconds>
+                <name>VoltDB Monitor Run Task</name>
+                <display-name>VoltDB Monitor Task</display-name>
+                <description>VoltDB Monitor Task</description>
+                <type>java</type>
+                <execution-timeout-in-secs>60</execution-timeout-in-secs>
+                <task-arguments>
+                    <argument name="voltdb-host" is-required="true" default-value="localhost" />
+                    <argument name="voltdb-port" is-required="true" default-value="21212" />
+                    <!--User should have access to execute system procedures -->
+                    <argument name="user-name" is-required="false" default-value="admin" />
+                    <argument name="password" is-required="false" default-value="voltdb" />
+                    <!--Mode through which you want to fetch stats. Possible values [clientAPI/restAPI] -->
+                    <argument name="mode" is-required="false" default-value="clientAPI" />
+		       </task-arguments>
+                <java-task>
+                    <classpath>voltdb-monitoring-extension.jar;</classpath>
+                    <impl-class>com.appdynamics.monitors.voltdb.VoltDBMonitor</impl-class>
+                </java-task>
+        </monitor-run-task>
+</monitor>
