@@ -2,6 +2,7 @@ package com.appdynamics.monitors.voltdb;
 
 import com.appdynamics.monitors.voltdb.client.Client;
 import com.appdynamics.monitors.voltdb.client.ClientBuilder;
+import com.appdynamics.monitors.voltdb.client.VoltClient;
 import com.appdynamics.monitors.voltdb.stats.IOStats;
 import com.appdynamics.monitors.voltdb.stats.IndexStats;
 import com.appdynamics.monitors.voltdb.stats.InitiatorStats;
@@ -83,6 +84,11 @@ public class VoltDBMonitor extends AManagedMonitor {
         ProcedureExecutor procedureExecutor = new ProcedureExecutor(client);
 
         gatherAndPrintStats(procedureExecutor, mode);
+
+        //Release the connection to VoltDb if it is VoltClient. In case of RestClient, when we consume the content the stream is closed. 
+        if (client instanceof VoltClient) {
+            ((VoltClient) client).release();
+        }
 
         return new TaskOutput("VoltDB monitoring task completed successfully.");
     }

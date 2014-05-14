@@ -3,7 +3,11 @@ package com.appdynamics.monitors.voltdb.client;
 import com.google.common.base.Strings;
 import com.singularity.ee.agent.systemagent.api.exception.TaskExecutionException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.MessageFormat;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -43,12 +47,13 @@ public class RestClient implements Client<String> {
         try {
             resp = execute(httpClient, get);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("Exception while executing procedure [" + procedureName + "] with parameter [" + parameter + "]", e);
+            throw new TaskExecutionException("Exception while executing procedure [" + procedureName + "] with parameter [" + parameter + "]", e);
         }
         return resp;
     }
 
-    private String getUrl(String procedureURL, String procedureName, String parameter) {
+    private String getUrl(String procedureURL, String procedureName, String parameter) throws TaskExecutionException {
 
         String formatURL = MessageFormat.format(procedureURL, host, port, procedureName, parameter);
         if (!Strings.isNullOrEmpty(user)) {
@@ -56,15 +61,26 @@ public class RestClient implements Client<String> {
         }
 
         if (!Strings.isNullOrEmpty(password)) {
-            formatURL += "&Password=" + password;
+            formatURL += "&Hashedpassword=" + getHashedPassword(password);
         }
         return formatURL;
     }
 
-    public static void main(String[] args) {
-        RestClient restClient = new RestClient("localhost", "80", "aaa", "bbb");
-        String url = restClient.getUrl(procedureURL, "ccc", "ddd");
-        System.out.println(url);
+    private String getHashedPassword(String password) throws TaskExecutionException {
+        MessageDigest cript = null;
+        try {
+            cript = MessageDigest.getInstance("SHA-1");
+            cript.reset();
+            cript.update(password.getBytes("utf8"));
+        } catch (NoSuchAlgorithmException e) {
+            LOG.error("Exception while hashing the password", e);
+            throw new TaskExecutionException("Exception while hashing the password", e);
+        } catch (UnsupportedEncodingException e) {
+            LOG.error("Exception while hashing the password", e);
+            throw new TaskExecutionException("Exception while hashing the password", e);
+        }
+        String hashedPassword = new String(Hex.encodeHex(cript.digest()));
+        return hashedPassword;
     }
 
     private String execute(HttpClient httpClient, HttpRequestBase req) throws TaskExecutionException, IOException {
