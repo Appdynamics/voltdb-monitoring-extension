@@ -87,18 +87,18 @@ This extension works only with the standalone machine agent.
 ##VoltDB
 
 ###Steps to secure VoltDB with username and password
-1)Create Role in VoltDB </br>
-  To create a role user has to execute the below query </br>
-  CREATE ROLE admin WITH sysproc,adhoc,DEFAULTPROC; </br>
-The above query createa role with admin with sysproc, adhoc and DEFAULTPROC permissions. </br>
-2)In the deployment.xml add the following lines </br>
+1. Create Role in VoltDB
+  ...To create a role user has to execute the below query </br>
+  ...CREATE ROLE admin WITH sysproc,adhoc,DEFAULTPROC; </br>
+  ...The above query createa role with admin with sysproc, adhoc and DEFAULTPROC permissions. </br>
+2. In the deployment.xml add the following lines 
   ~~~~
   <security enabled="true"/> 
   <users>
     <user name="admin" password="voltdb" roles="admin"/>
   </users>
   ~~~~
-  It will enable security and you can only access the VoltDB with user 'admin' and password 'voltdb'. 
+  ...It will enable security and you can only access the VoltDB with user 'admin' and password 'voltdb'. 
 
 
 ##Metrics
