@@ -108,11 +108,11 @@ This extension works only with the standalone machine agent.
 ###Enabling Jsonp
 If you want to fetch stats using REST API, you must enable jsonp. To enable it add the below lines to depmoyment.xml
 
-	~~~~
-	<httpd enabled="true">
-          <jsonapi enabled="true" />
-        </httpd>
-        ~~~~
+ ~~~~
+ <httpd enabled="true">
+   <jsonapi enabled="true" />
+ </httpd>	
+ ~~~~
 
 
 ##Metrics
