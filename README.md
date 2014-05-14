@@ -77,7 +77,7 @@ This extension works only with the standalone machine agent.
                     <argument name="mode" is-required="false" default-value="clientAPI" />
 		       </task-arguments>
                 <java-task>
-                    <classpath>voltdb-monitoring-extension.jar;lib/commons-codec-1.6.jar;lib/commons-logging-1.1.3.jar;lib/guava-r09.jar;lib/httpclient-4.3.3.jar;lib/httpcore-4.3.2.jar;lib/jackson-annotations-2.1.5.jar;lib/jackson-core-2.1.5.jar;lib/jackson-databind-2.1.5.jar;lib/voltdb-client-4.2.jar;</classpath>
+                    <classpath>voltdb-monitoring-extension.jar</classpath>
                     <impl-class>com.appdynamics.monitors.voltdb.VoltDBMonitor</impl-class>
                 </java-task>
         </monitor-run-task>
