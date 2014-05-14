@@ -21,7 +21,7 @@
                     <argument name="mode" is-required="false" default-value="clientAPI" />
 		       </task-arguments>
                 <java-task>
-                    <classpath>voltdb-monitoring-extension.jar;</classpath>
+                    <classpath>voltdb-monitoring-extension.jar</classpath>
                     <impl-class>com.appdynamics.monitors.voltdb.VoltDBMonitor</impl-class>
                 </java-task>
         </monitor-run-task>
