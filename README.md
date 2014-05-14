@@ -100,7 +100,10 @@ This extension works only with the standalone machine agent.
     <user name="admin" password="voltdb" roles="admin"/>
   </users>
   ~~~~
-   It will enable security and you can only access the VoltDB with user 'admin' and password 'voltdb'. 
+   It will enable security and you can only access the VoltDB with user 'admin' and password 'voltdb'.  
+   
+
+   For more info on security please visit http://voltdb.com/docs/UsingVoltDB/ChapSecurity.php#SecurityHowItWorks   
 
 
 ##Metrics
