@@ -88,9 +88,10 @@ This extension works only with the standalone machine agent.
 
 ###Steps to secure VoltDB with username and password
 1. Create Role in VoltDB
-  ...To create a role user has to execute the below query </br>
-  ...CREATE ROLE admin WITH sysproc,adhoc,DEFAULTPROC; </br>
-  ...The above query createa role with admin with sysproc, adhoc and DEFAULTPROC permissions. </br>
+
+  ...To create a role user has to execute the below query..
+  ...CREATE ROLE admin WITH sysproc,adhoc,DEFAULTPROC;..
+  ...The above query createa role with admin with sysproc, adhoc and DEFAULTPROC permissions.
 2. In the deployment.xml add the following lines 
   ~~~~
   <security enabled="true"/> 
