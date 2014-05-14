@@ -228,6 +228,8 @@ Metrics related to every table, per partition
 | Custom Metrics/VoltDB/Stats/Table/{SITE_ID}/{PARTITION_ID}/{TABLE_NAME}/TUPLE_DATA_MEMORY | The total memory, in kilobytes, used for storing inline data associated with this table in this partition |
 | Custom Metrics/VoltDB/Stats/Table/{SITE_ID}/{PARTITION_ID}/{TABLE_NAME}/TUPLE_LIMIT | The row limit for this table |
 
+For more info on stats please visit http://voltdb.com/docs/UsingVoltDB/sysprocstatistics.php
+
 
 ## Custom Dashboard ##
 ![](https://github.com/Appdynamics/voltdb-monitoring-extension/raw/master/voltdb-custom-dashboard.png)
