@@ -90,8 +90,8 @@ This extension works only with the standalone machine agent.
 1. Create Role in VoltDB
 
    To create a role user has to execute the below query  
-   CREATE ROLE admin WITH sysproc,adhoc,DEFAULTPROC;  
-   The above query createa role with admin with sysproc, adhoc and DEFAULTPROC permissions.
+   CREATE ROLE admin WITH sysproc,adhoc,defaultproc;  
+   The above query createa role with admin with sysproc, adhoc and defaultproc permissions.
 2. In the deployment.xml add the following lines
 
   ~~~~
@@ -105,8 +105,8 @@ This extension works only with the standalone machine agent.
 
    For more info on securing VoltDB please visit http://voltdb.com/docs/UsingVoltDB/ChapSecurity.php#SecurityHowItWorks   
    
-###Enabling Jsonp
-If you want to fetch stats using REST API, you must enable json interface. You do this by adding the following lines to depmoyment.xml
+###Enabling Json interface
+If you want to fetch stats using REST API, you must enable json interface. You do this by adding the following lines to deployment.xml
 
  ~~~~
  <httpd enabled="true">
@@ -267,7 +267,7 @@ For more info on stats please visit http://voltdb.com/docs/UsingVoltDB/sysprocst
 
 ##Contributing
 
-Always feel free to fork and contribute any changes directly via [GitHub](https://github.com/Appdynamics/voltdb-monitoring-extension).
+Always feel free to fork and contribute any changes directly here on GitHub
 
 ##Community
 
