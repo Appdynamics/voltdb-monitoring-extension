@@ -104,6 +104,15 @@ This extension works only with the standalone machine agent.
    
 
    For more info on securing VoltDB please visit http://voltdb.com/docs/UsingVoltDB/ChapSecurity.php#SecurityHowItWorks   
+   
+###Enabling Jsonp
+If you want to fetch stats using REST API, you must enable jsonp. To enable it add the below lines to depmoyment.xml
+
+	~~~~
+	<httpd enabled="true">
+          <jsonapi enabled="true" />
+        </httpd>
+        ~~~~
 
 
 ##Metrics
