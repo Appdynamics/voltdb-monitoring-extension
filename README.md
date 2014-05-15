@@ -14,6 +14,9 @@ This extension works only with the standalone machine agent.
 5. Restart the Machine Agent.
 6. In the AppDynamics controller, look for events in Custom Metrics|VoltDB|
 
+   Note: As this extension is reporting more than 200 metrics, please start the machine agent with appdynamics.agent.maxMetrics=400 property to increase the metric limit. Default metric limit is 200  
+   ex : java -Dappdynamics.agent.maxMetrics=400 -jar machineagent.jar
+
 ##Directory Structure
 
 <table><tbody>
