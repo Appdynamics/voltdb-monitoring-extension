@@ -6,6 +6,12 @@ The VoltDB Monitoring Extension collects the stats from VoltDB and reports them 
 
 This extension works only with the standalone machine agent.
 
+##Prerequisite
+VoltDB client library is not in maven repo. To get it using maven we have to install the client library in the local maven repo. Client library with version 4.2 is checked in to the lib folder. Use the below maven command to install the library to local maven repo.
+
+mvn install:install-file -Dfile={path to client library} -DgroupId=org.voltdb -DartifactId=voltdb-client -Dversion=4.2 -Dpackaging=jar
+
+
 ##Installation
 1. Run 'mvn clean install' from the voltdb-monitoring-extension directory
 2. Download the file VoltDBMonitor.zip found in the 'target' directory into \<machineagent install dir\>/monitors/
